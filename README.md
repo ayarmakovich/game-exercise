@@ -1,0 +1,1 @@
+﻿Demo of the solution will be organized per SKYPE
