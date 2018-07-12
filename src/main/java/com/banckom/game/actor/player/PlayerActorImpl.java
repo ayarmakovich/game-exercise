@@ -45,8 +45,10 @@ public class PlayerActorImpl implements PlayerActor {
         if (canBeMovedByY(yShift)) {
             double x = player.getPosition().getX();
             double y = player.getPosition().getY();
-            player.setPosition(new Position(x + xShift, y + yShift, nowTimestamp()));
-            return true;
+            synchronized (player.getPlayingArea()) {
+                player.setPosition(new Position(x + xShift, y + yShift, nowTimestamp()));
+                return true;
+            }
         }
         return false;
     }
